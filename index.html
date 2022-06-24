@@ -1,0 +1,117 @@
+<!--
+	COMPSCI 235 (2021) - University of Auckland
+	ASSIGNMENT THREE - Client Side
+	Simon Shan		441147157
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="qsha020.css">
+	<link rel="icon" href="http://localhost:5000/logo-192x192.png">
+	<script defer="true" src="qsha020.js"></script>
+	<title>SHIT</title>
+</head>
+<body>
+	<nav>
+		<header>
+			<img class="logo" src="http://localhost:5000/api/GetLogo" alt="logo">
+		</header>
+		<h2 onclick="navigation(this)">🏠 Home</h2>
+		<h2 onclick="navigation(this)">🗂 Staff</h2>
+		<h2 onclick="navigation(this)">🛒 Institute Shop</h2>
+		<h2 onclick="navigation(this)">👤 Registration</h2>
+		<h2 onclick="navigation(this)">📔 Guest Book</h2>
+		<footer>
+			<p class="status">
+				<span class="indicator">•</span>
+				<span class="message">not logged in</span>
+				<span class="logout" onclick="logout()">[Log out]</span>
+			</p>
+		</footer>
+	</nav>
+
+	<main>
+		<section>
+			<h1>🏠 Home</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet aliquam id diam maecenas ultricies mi eget mauris pharetra. Id porta nibh venenatis cras. Venenatis cras sed felis eget velit aliquet sagittis. Turpis in eu mi bibendum neque. Velit euismod in pellentesque massa placerat duis. Enim lobortis scelerisque fermentum dui faucibus. Morbi enim nunc faucibus a pellentesque. Aenean sed adipiscing diam donec adipiscing tristique risus nec feugiat. Blandit turpis cursus in hac habitasse platea dictumst quisque. Aliquet lectus proin nibh nisl condimentum id venenatis a.
+			</p>
+			<img src="https://c.tenor.com/v8u_dK-9SgQAAAAC/uvapassa-happy.gif" alt="paragraph image">
+			<p>
+				Diam sit amet nisl suscipit adipiscing bibendum est. Faucibus a pellentesque sit amet porttitor. Purus semper eget duis at tellus at urna. Magna eget est lorem ipsum dolor sit amet consectetur. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Sit amet dictum sit amet justo donec enim. Est ullamcorper eget nulla facilisi. Sit amet nulla facilisi morbi tempus iaculis urna. Adipiscing tristique risus nec feugiat. Urna duis convallis convallis tellus id interdum velit laoreet. Purus gravida quis blandit turpis. Non quam lacus suspendisse faucibus. Pharetra diam sit amet nisl suscipit. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Eget arcu dictum varius duis. Ornare aenean euismod elementum nisi quis eleifend. Elit pellentesque habitant morbi tristique senectus et netus et.
+			</p>
+		</section>
+
+		<section id="staff">
+			<h1>🗂 Staff</h1>
+			<div class="card-table"></div>
+		</section>
+
+		<section id="shop">
+			<div class="title-search-bar">
+				<h1>🛒 Institute Shop</h1>
+				<input type="text" name="search" onkeyup="search(this)" placeholder="Search for products">
+			</div>
+			<div class="card-table"></div>
+		</section>
+
+		<section>
+			<h1>👤 User Registration</h1>
+		</section>
+
+		<section id="guest-book">
+			<h1>📔 Guest Book</h1>
+			<table class="comment">
+				<colgroup>
+					<col style="width:20%">
+					<col style="width:80%">
+				</colgroup>
+				<tr>
+					<td>Your comment:</td>
+					<td><textarea name="comment" placeholder="Comment"></textarea></td>
+				</tr>
+				<tr>
+					<td>Your name:</td>
+					<td>
+						<input type="text" name="name" placeholder="Your name">
+						<input type="submit" name="submit" value="Post!" onclick="comment()">
+					</td>
+				</tr>
+			</table>
+			<br>
+			<iframe src="http://localhost:5000/api/GetComments"></iframe>
+		</section>
+
+		<footer>Copyright 2021 Southern Hemisphere Institute of Technology | mightbesimon | github.com/mightbesimon</footer>
+	</main>
+
+	<!-- pop ups -->
+	<div class="shadow"></div>
+	<section class="popup" id="login">
+		<div class="close"></div>
+		<div class="form">
+			<h1>Kia ora friend!</h1>
+			Username:
+			<input type="text" name="username" placeholder="Username">
+			Password:
+			<input type="password" name="password" placeholder="Password">
+			<input type="submit" name="login" value="Log in!" onclick="login()">
+		</div>
+	</section>
+	<section class="popup" id="register">
+		<div class="close"></div>
+		<div class="form">
+			<h1>Kia ora friend!</h1>
+			Username:
+			<input type="text" name="username" placeholder="Username">
+			Password:
+			<input type="password" name="password" placeholder="Password">
+			Address:
+			<input class="address" type="text" name="address" placeholder="Address">
+			<input type="submit" name="register" value="Register!" onclick="register()">
+		</div>
+	</section>
+</body>
+</html>

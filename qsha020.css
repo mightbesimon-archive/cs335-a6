@@ -1,0 +1,493 @@
+/*
+ * Copyright 2021 mightbesimon | github.com/mightbesimon
+ * All rights reserved.
+ */
+
+/**************************************************************
+ *****              declare global variables              *****
+ **************************************************************/
+:root {
+	/* colour palette */
+	--cream      : hsl(40, 100%, 96%);
+	--cream-light: hsl(40, 100%, 98%);
+	--cream-dark : hsl(40,  39%, 90%);
+	--coffee     : hsl(40,  14%, 62%);
+	--purple     : hsl(258, 14%, 62%);
+	--dark       : hsl(109,  7%, 33%);
+	--green      : hsl(128, 30%, 42%);
+	--green-vibr : hsl(128, 64%, 42%);
+	--green2     : hsl(140, 15%, 55%);
+	--green2-dark: hsl(140, 11%, 36%);
+	--red        : hsl( 2, 100%, 66%);
+
+	/* shadows */
+	--shadow       : rgba( 0,  0,  0, .3 );
+	--shadow2      : rgba( 0,  0,  0, .5 );
+	--shadow-blue  : rgba(50, 50, 93, .25);
+	--shadow-green : hsla(128, 50%, 42%, .25);
+	--shadow-purple: hsla(258, 64%, 62%, .25);
+	--shadow-in: inset 1px .15rem .3rem -.1rem var(--shadow-blue), inset 1px .1rem .2rem -.1rem var(--shadow), inset -1px -1px .3rem -.1rem var(--shadow-blue), inset -1px -1px .2rem -.1rem var(--shadow);
+	--shadow-nav: .3rem 0 .6rem var(--shadow-green), .2rem 0 .4rem var(--shadow);
+	--shadow-current: inset .3rem .3rem .6rem -.2rem var(--shadow-blue), inset .2rem .2rem .4rem -.2rem var(--shadow);
+	--shadow-hover: inset 1px .3rem .6rem -.2rem var(--shadow-blue), inset 1px .2rem .4rem -.2rem var(--shadow), inset -1px -1px .6rem -.2rem var(--shadow-blue), inset -1px -1px .4rem -.2rem var(--shadow);
+	--shadow-card: 1px .6rem 1.2rem -.4rem var(--shadow-blue), 1px .4rem .8rem -.4rem var(--shadow), -1px -1px 1.2rem -.4rem var(--shadow-blue), -1px -1px .8rem -.4rem var(--shadow);
+	--shadow-card2: 1px .6rem 1.2rem var(--shadow-purple), 1px .4rem .8rem var(--shadow), -1px -1px 1.2rem var(--shadow-purple), -1px -1px .8rem var(--shadow);
+
+	/* themes */
+	--nav-bg   : var(--green2-dark);
+	--nav-text : white;
+	--nav-hover: hsl(140, 11%, 27%);
+	--main     : var(--cream );
+	--text     : var(--dark  );
+	--highlight: var(--green);
+	--heading  : var(--green2);
+	--footer   : var(--cream-dark);
+	--card     : var(--cream-light);
+	--border   : rgba(255, 255, 255, .1);
+	--button   : var(--green);
+	--button-hover: hsl(128, 30%, 32%);
+}
+[onClick] {
+	cursor: pointer;
+}
+
+/**************************************************************
+ *****             override unhelpful presets             *****
+ **************************************************************/
+* {
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0;
+	font-size: 1.5vw;
+	background: var(--nav-bg);
+	transition: all .5s ease;
+}
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+/**************************************************************
+ *****               NAV STARTS HERE [left]               *****
+ **************************************************************/
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 18%;
+	height: 100vh;
+	/*background: var(--nav-bg);*/
+	background: linear-gradient(90deg, var(--nav-bg) 50%, var(--main) 50%);
+	color: var(--nav-text);
+}
+nav header {
+	padding: 1rem;
+	box-sizing: border-box;
+	width: 100%;
+	text-align: center;
+	font-size: 6rem;
+	/*text-shadow: -.5rem 1rem 1rem var(--shadow);*/
+	background: var(--nav-bg);
+	transition: border-radius .5s;
+}
+nav header img.logo {
+	display: block;
+	padding: 1rem;
+	width: 100%;
+	height: auto;
+	border-radius: 1rem;
+	box-shadow: var(--shadow-hover);
+	/*background: var(--nav-hover);*/
+	background: var(--main);
+}
+nav h2 {
+	margin: 0;
+	padding: 1rem;
+	padding-right: 0 !important;
+
+	font: 1.2rem sans-serif;
+	background: var(--nav-bg);
+	transition: margin .5s, padding .5s, border-radius .5s, background .5s, color .3s;
+}
+nav h2.current {
+	margin-left: .5rem;
+	padding-left: .5rem;
+	border-radius: .5rem 0 0 .5rem;
+	/*box-shadow: var(--shadow-current);*/
+	background: var(--main);
+	color: var(--text);
+}
+nav h2:hover {
+	margin: 0;
+	padding: 1rem;
+	padding-left: 1.5rem;
+	border-radius: 0;
+	box-shadow: var(--shadow-hover);
+	background: var(--nav-hover);
+	color: var(--nav-text);
+}
+nav .before {
+	border-radius: 0 0 .5rem 0;
+}
+nav .after {
+	border-radius: 0 .5rem 0 0;
+}
+nav:hover .before {
+	border-radius: 0;
+}
+nav:hover .after {
+	border-radius: 0;
+}
+nav footer {
+	padding: 1rem;
+	width: 100%;
+	height: 100%;
+	background: var(--nav-bg);
+	transition: border-radius .5s;
+}
+nav footer p.status {
+	margin: 0;
+	padding: .2rem;
+	border-radius: .2rem;
+	text-align: center;
+	font: .8rem monospace;
+	box-shadow: var(--shadow-in);
+	background: var(--nav-hover);
+}
+nav footer p.status span.indicator {
+	color: var(--red);
+}
+nav footer p.status span.logout {
+	display: none;
+	text-decoration: underline;
+}
+
+/**************************************************************
+ *****              MAIN STARTS HERE [right]              *****
+ **************************************************************/
+main {
+	padding-left: 22.5%;
+	padding-right: 7.5%;
+	min-height: 100vh;
+
+	background: var(--main);
+	color: var(--text);
+
+	display: flex;
+	flex-direction: column;
+}
+main h1 {
+	font-size: 2.4rem;
+	color: var(--heading);
+	text-shadow: 0 0 .2rem var(--shadow);
+}
+main section {
+	display: none;
+}
+main section.current {
+	display: block;
+}
+
+/**************************************************************
+ *****                MAIN [Staff] [Shop]                 *****
+ **************************************************************/
+main section div.card-table {
+	display: flex;
+	flex-wrap: wrap;
+}
+main section div.card-table div.card {
+	max-width: calc(25% - 2rem);
+	margin: 1rem;
+	border-radius: .8rem;
+	box-shadow: var(--shadow-card);
+	background: var(--card);
+	transition: box-shadow .3s ease;
+}
+main section div.card-table div.card:hover {
+	box-shadow: var(--shadow-card2);
+}
+main section div.card-table div.card img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 36vh;
+	border-radius: .8rem .8rem 0 0;
+}
+main section div.card-table div.card h3.title {
+	margin: 0;
+	padding: .8rem;
+	border-radius: 0 0 .8rem .8rem;
+	font: .8rem sans-serif;
+}
+/**************************************************************
+ *****                   POP-UP WINDOWS                   *****
+ **************************************************************/
+div.shadow {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: var(--shadow2);
+}
+section.popup {
+	display: none;
+	position: fixed;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	box-shadow: var(--shadow-card);
+	background: var(--card);
+	color: var(--text);
+	border-radius: 1rem;
+}
+section.popup.staff,
+section.popup.product {
+	display: flex;
+}
+section.popup.staff img,
+section.popup.product img {
+	display: block;
+	max-height: 50vh;
+	width: auto;
+	border-radius: 1rem 0 0 1rem;
+}
+section.popup.staff div.staff-info,
+section.popup.product div.product-info {
+	padding: 1rem;
+}
+section.popup div div.top {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+section.popup div.close {
+	min-width: 1.4rem;
+	max-width: 1.4rem;
+	min-height: 1.4rem;
+	max-height: 1.4rem;
+	border-radius: 1.4rem;
+	text-align: center;
+	font: 1.2rem monospace;
+	background: var(--red);
+	color: var(--nav-text);
+	/*transition: content .3s ease;*/
+}
+section.popup div.close:hover:after {
+	content: '×';
+}
+section.popup div div.top h3.title {
+	margin: 0;
+}
+section.popup.staff div.staff-info a {
+	font-style: italic;
+	color: var(--highlight);
+}
+section.popup div h3.button {
+	padding: .5rem;
+	border-radius: .5rem;
+	font: normal .8rem sans-serif;
+	text-align: center;
+	box-shadow: var(--shadow-card);
+	background: var(--button);
+	color: var(--nav-text);
+	transition: padding .3s, box-shadow .3s, background .3s;
+}
+section.popup div h3.button:hover {
+	padding-top: .6rem;
+	padding-bottom: .4rem;
+	box-shadow: var(--shadow-hover);
+	background: var(--button-hover);
+}
+section.popup div p.message {
+	padding: .2rem;
+	border-radius: .2rem;
+	font: .8rem monospace;
+	box-shadow: var(--shadow-in);
+	background: var(--footer);
+	color: var(--highlight);
+}
+/**************************************************************
+ *****                   MAIN [Search]                    *****
+ **************************************************************/
+main section#shop div.title-search-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+main section#shop div.title-search-bar input[type='text'] {
+	margin: 0;
+	padding: .5rem;
+	width: 36%;
+	border: 1px solid var(--shadow);
+	border-radius: .5rem;
+
+	font: .8rem monospace;
+	background: var(--card);
+	color: var(--text);
+	transition: box-shadow .3s;
+}
+main section#shop div.title-search-bar input[type='text']:focus {
+	outline: none;
+	box-shadow: var(--shadow-in);
+}
+
+/**************************************************************
+ *****                 MAIN [Guest Book]                  *****
+ **************************************************************/
+main section#guest-book table.comment {
+	padding: 1rem;
+	min-width: 80%;
+	border-radius: 1rem;
+	/*box-shadow: var(--shadow-card);*/
+	/*background: var(--card);*/
+}
+main section#guest-book textarea {
+	width: 100%;
+	padding: .5rem;
+	height: 6rem;
+	border-color: var(--shadow);
+	border-radius: .25rem;
+
+	font: .8rem monospace;
+	background: var(--card);
+	color: var(--text);
+	transition: box-shadow .3s;
+}
+main section#guest-book textarea:focus {
+	outline: none;
+	box-shadow: var(--shadow-in);
+}
+main section#guest-book input[type='text'] {
+	width: 65%;
+	padding: .5rem;
+	border: 1px solid var(--shadow);
+	border-radius: .25rem;
+
+	font: .8rem monospace;
+	background: var(--card);
+	color: var(--text);
+	transition: box-shadow .3s;
+}
+main section#guest-book input[type='text']:focus {
+	outline: none;
+	box-shadow: var(--shadow-in);
+}
+main section#guest-book input[type='submit'] {
+	float: right;
+	width: 25%;
+	padding: .5rem;
+	border: 1px solid transparent;
+	border-radius: .5rem;
+
+	font-size: .8rem;
+	/*font: .8rem monospace;*/
+	text-align: center;
+	box-shadow: var(--shadow-card);
+	background: var(--button);
+	color: var(--nav-text);
+	transition: padding .3s, box-shadow .3s, background .3s;
+}
+main section#guest-book input[type='submit']:hover {
+	padding-top: .6rem;
+	padding-bottom: .4rem;
+	box-shadow: var(--shadow-hover);
+	background: var(--button-hover);
+}
+main section#guest-book iframe {
+	padding: 1rem;
+	width: 100%;
+	border: 0;
+	border-radius: 1rem;
+	box-shadow: var(--shadow-hover);
+	background: var(--footer);
+	color: var(--text);
+}
+
+/**************************************************************
+ *****                    MAIN [Login]                    *****
+ **************************************************************/
+section.popup#register,
+section.popup#login {
+	background: var(--footer);
+	z-index: 10;
+}
+section.popup#register div.close,
+section.popup#login div.close {
+	margin: .5rem .5rem .5rem auto;
+}
+section.popup#register div.form,
+section.popup#login div.form {
+	padding: 2rem;
+	padding-top: 1rem;
+	border-radius: 0 0 1rem 1rem;
+	border-top: 1px solid var(--shadow);
+
+	font: .8rem monospace;
+	box-shadow: inset 0 .5rem .5rem -.5rem var(--shadow);
+	background: var(--card);
+	display: flex;
+	flex-direction: column;
+}
+section.popup#register h1,
+section.popup#login h1 {
+	margin: 0;
+	margin-bottom: 1rem;
+	font: bold 2rem serif;
+}
+section.popup#register input[type='text'],
+section.popup#register input[type='password'],
+section.popup#login input[type='text'],
+section.popup#login input[type='password'] {
+	margin: .3rem 0 1rem 0;
+	padding: .5rem;
+	border: 1px solid var(--shadow);
+	border-radius: .25rem;
+
+	font: .8rem monospace;
+	box-shadow: var(--shadow-in);
+	background: var(--footer);
+	color: var(--text);
+	/*transition: box-shadow .3s;*/
+}
+section.popup#register input[type='submit'],
+section.popup#login input[type='submit'] {
+	align-self: center;
+	width: 80%;
+	padding: .5rem;
+	border: 1px solid transparent;
+	border-radius: .5rem;
+
+	font-size: .8rem;
+	text-align: center;
+	box-shadow: var(--shadow-card);
+	background: var(--button);
+	color: var(--nav-text);
+	transition: padding .3s, box-shadow .3s, background .3s;
+}
+section.popup#register input[type='submit']
+section.popup#login input[type='submit']:hover {
+	padding-top: .6rem;
+	padding-bottom: .4rem;
+	box-shadow: var(--shadow-hover);
+	background: var(--button-hover);
+}
+
+/**************************************************************
+ *****         footer, copyright information etc.         *****
+ **************************************************************/
+main footer {
+	margin-top: auto;
+	margin-bottom: .35rem;
+	padding: .25rem;
+	padding-right: 2.5rem;
+	border-radius: .25rem;
+
+	font: .5rem sans-serif;
+	text-align: right;
+
+	box-shadow: var(--shadow-in);
+	background: var(--footer);
+}
